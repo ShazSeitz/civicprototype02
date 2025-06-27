@@ -54,8 +54,15 @@ export interface ConflictDefinition {
   possibleCompromises?: string[];
 }
 
+export interface FlaggedPriority {
+  userPriority: string;
+  flagType: 'extreme' | 'out_of_scope' | 'ambiguous_concern';
+  reason: string;
+}
+
 export interface PriorityAnalysis {
   mappedPriorities: MappedPriority[];
   dominantCategories: PoliticalCategory[];
   potentialConflicts: ConflictDefinition[];
+  flaggedPriorities?: FlaggedPriority[];
 }

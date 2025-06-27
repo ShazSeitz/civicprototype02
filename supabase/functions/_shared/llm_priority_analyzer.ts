@@ -84,8 +84,9 @@ export async function analyzeAndMapPrioritiesWithLLM(
             console.log('LLM Service: Parsed mapping result (from string):', mappingResult);
             return mappingResult as LLMAnalysisResult;
         } catch (parseError) {
-            console.error('LLM Service: Failed to parse OpenAI response content string:', parseError, '\nRaw content:', rawContent);
-            throw new Error('Failed to parse OpenAI response content string.');
+            console.error('LLM Service: Failed to parse OpenAI response content string. Error details:', parseError);
+            console.error('LLM Service: Raw content that caused parsing error:', rawContent);
+            throw new Error('Failed to parse OpenAI response content string. Check server logs for raw content details.');
         }
     } else {
         console.error('LLM Service: Invalid or unexpected response structure from OpenAI API.', data);
